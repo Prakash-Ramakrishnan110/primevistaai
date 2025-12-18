@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -22,10 +23,12 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center glow-primary group-hover:scale-110 transition-transform">
-              <Zap className="w-6 h-6 text-primary-foreground" />
-            </div>
+          <Link to="/" className="flex items-center gap-3 group">
+            <img 
+              src={logo} 
+              alt="Prime Vista Logo" 
+              className="w-10 h-10 md:w-12 md:h-12 object-contain group-hover:scale-110 transition-transform drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]"
+            />
             <span className="text-xl font-bold gradient-text">Prime Vista</span>
           </Link>
 

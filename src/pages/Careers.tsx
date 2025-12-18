@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { CareerApplicationForm } from "@/components/features/CareerApplicationForm";
 import { 
-  Code, Brain, Rocket, Palette, ArrowRight, 
+  Code, Brain, Rocket, Palette, 
   CheckCircle, Zap, Users, TrendingUp 
 } from "lucide-react";
 
@@ -42,6 +43,8 @@ const benefits = [
 ];
 
 const Careers = () => {
+  const [selectedPosition, setSelectedPosition] = useState<string | null>(null);
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
@@ -106,8 +109,12 @@ const Careers = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{position.title}</h3>
                 <p className="text-muted-foreground text-sm mb-4">{position.description}</p>
-                <Button variant="outline" size="sm" asChild>
-                  <Link to="/contact">Apply Now</Link>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => setSelectedPosition(position.title)}
+                >
+                  Apply Now
                 </Button>
               </div>
             ))}
@@ -126,17 +133,25 @@ const Careers = () => {
               Starting your career? We offer internship programs where you'll work on real projects, 
               learn from experienced mentors, and build skills that matter in the industry.
             </p>
-            <Button variant="hero" size="xl" asChild>
-              <Link to="/contact">
-                Apply for Internship
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+            <Button 
+              variant="hero" 
+              size="xl"
+              onClick={() => setSelectedPosition("Internship")}
+            >
+              Apply for Internship
             </Button>
           </div>
         </div>
       </section>
 
       <Footer />
+
+      {/* Career Application Form Modal */}
+      <CareerApplicationForm
+        isOpen={!!selectedPosition}
+        onClose={() => setSelectedPosition(null)}
+        position={selectedPosition || ""}
+      />
     </main>
   );
 };
