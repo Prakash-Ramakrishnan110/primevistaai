@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Zap, Linkedin, Github, Mail } from "lucide-react";
+import { Linkedin, Github, Mail } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const footerLinks = {
   company: [
@@ -25,10 +26,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <Zap className="w-6 h-6 text-primary-foreground" />
-              </div>
+            <Link to="/" className="flex items-center gap-3 mb-4">
+              <img 
+                src={logo} 
+                alt="Prime Vista" 
+                className="w-10 h-10 object-contain drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]" 
+              />
               <span className="text-xl font-bold gradient-text">Prime Vista</span>
             </Link>
             <p className="text-muted-foreground text-sm max-w-xs mb-6">
@@ -52,7 +55,7 @@ export function Footer() {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="mailto:contact@primevista.in"
+                href="mailto:prakash7418r@gmail.com"
                 className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
               >
                 <Mail className="w-5 h-5" />
