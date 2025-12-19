@@ -7,8 +7,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, MessageCircle, Send, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 const Contact = () => {
+  useScrollToTop();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
