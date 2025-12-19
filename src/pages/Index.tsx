@@ -7,13 +7,18 @@ import { StatsSection } from "@/components/home/StatsSection";
 import { AIShowcase } from "@/components/home/AIShowcase";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
 import { ProcessTimeline } from "@/components/home/ProcessTimeline";
+import { Testimonials } from "@/components/home/Testimonials";
+import { ProductDemo } from "@/components/home/ProductDemo";
 import { GlobalReach } from "@/components/home/GlobalReach";
 import { CTASection } from "@/components/home/CTASection";
 import { Chatbot } from "@/components/features/Chatbot";
 import { WelcomePopup } from "@/components/features/WelcomePopup";
 import { NotificationToast } from "@/components/features/NotificationToast";
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 const Index = () => {
+  useScrollToTop();
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
@@ -23,7 +28,9 @@ const Index = () => {
       <StatsSection />
       <AIShowcase />
       <ServicesPreview />
+      <ProductDemo />
       <ProcessTimeline />
+      <Testimonials />
       <GlobalReach />
       <CTASection />
       <Footer />
