@@ -7,6 +7,7 @@ import {
   MessageSquare, Mail, Database, BarChart3, 
   Smartphone, Globe, ArrowRight 
 } from "lucide-react";
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 const services = [
   {
@@ -76,6 +77,8 @@ const capabilities = [
 ];
 
 const Services = () => {
+  useScrollToTop();
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />

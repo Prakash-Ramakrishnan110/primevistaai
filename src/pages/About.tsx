@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Target, Eye, Heart, Lightbulb, Shield, Users, TrendingUp } from "lucide-react";
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 const values = [
   {
@@ -26,6 +27,8 @@ const values = [
 ];
 
 const About = () => {
+  useScrollToTop();
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />

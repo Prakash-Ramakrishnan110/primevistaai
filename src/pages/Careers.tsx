@@ -7,6 +7,7 @@ import {
   Code, Brain, Rocket, Palette, 
   CheckCircle, Zap, Users, TrendingUp 
 } from "lucide-react";
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 const positions = [
   {
@@ -43,6 +44,7 @@ const benefits = [
 ];
 
 const Careers = () => {
+  useScrollToTop();
   const [selectedPosition, setSelectedPosition] = useState<string | null>(null);
 
   return (
