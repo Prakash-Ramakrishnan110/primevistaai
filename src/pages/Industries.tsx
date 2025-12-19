@@ -4,8 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { 
   GraduationCap, Heart, ShoppingCart, Truck, 
-  Wheat, Building, Briefcase, ArrowRight 
+  Wheat, Building, Briefcase, Factory, Plane,
+  Film, Utensils, Home, Banknote, Dumbbell,
+  ArrowRight 
 } from "lucide-react";
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 const industries = [
   {
@@ -43,9 +46,46 @@ const industries = [
     title: "SMEs & Startups",
     description: "MVP development, business automation, and growth-ready platforms.",
   },
+  {
+    icon: Factory,
+    title: "Manufacturing",
+    description: "Production monitoring, quality control, and supply chain automation.",
+  },
+  {
+    icon: Banknote,
+    title: "Banking & Finance",
+    description: "Fraud detection, automated reporting, and customer onboarding.",
+  },
+  {
+    icon: Plane,
+    title: "Travel & Hospitality",
+    description: "Booking systems, guest management, and personalized experiences.",
+  },
+  {
+    icon: Film,
+    title: "Media & Entertainment",
+    description: "Content management, distribution automation, and audience analytics.",
+  },
+  {
+    icon: Utensils,
+    title: "Food & Beverage",
+    description: "Order management, inventory tracking, and delivery optimization.",
+  },
+  {
+    icon: Home,
+    title: "Real Estate",
+    description: "Property management, lead automation, and virtual tour systems.",
+  },
+  {
+    icon: Dumbbell,
+    title: "Fitness & Wellness",
+    description: "Member management, booking systems, and engagement platforms.",
+  },
 ];
 
 const Industries = () => {
+  useScrollToTop();
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
@@ -68,16 +108,16 @@ const Industries = () => {
       {/* Industries Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="glass-card p-8 group hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
+                className="glass-card p-6 group hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                  <industry.icon className="w-7 h-7 text-primary" />
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <industry.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{industry.title}</h3>
+                <h3 className="text-lg font-semibold mb-2 text-foreground">{industry.title}</h3>
                 <p className="text-muted-foreground text-sm">{industry.description}</p>
               </div>
             ))}
@@ -94,7 +134,7 @@ const Industries = () => {
           <p className="text-muted-foreground max-w-xl mx-auto mb-8">
             We work across sectors. Tell us about your challenges and we'll craft a custom solution.
           </p>
-          <Button variant="hero" size="xl" asChild>
+          <Button variant="hero" size="lg" asChild>
             <Link to="/contact">
               Let's Talk
               <ArrowRight className="w-5 h-5" />
