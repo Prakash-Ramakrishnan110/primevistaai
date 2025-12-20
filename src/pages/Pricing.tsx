@@ -139,23 +139,27 @@ const Pricing = () => {
                   onChange={(e) => {
                     setSearchQuery(e.target.value);
                     setShowSuggestions(true);
-                    setRecommendedPlan(null);
+                    if (!e.target.value) {
+                      setRecommendedPlan(null);
+                    }
                   }}
-                  onFocus={() => setShowSuggestions(true)}
+                  onFocus={() => searchQuery && setShowSuggestions(true)}
+                  onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
                   className="pl-12 pr-4 py-6 text-base"
                 />
               </div>
 
               {showSuggestions && searchQuery && filteredBusinessTypes.length > 0 && (
-                <div className="absolute top-full mt-2 w-full glass-card rounded-xl overflow-hidden z-50 max-h-60 overflow-y-auto">
+                <div className="absolute top-full mt-2 w-full glass-card rounded-xl overflow-hidden z-50 max-h-60 overflow-y-auto border border-border">
                   {filteredBusinessTypes.map((business) => (
                     <button
                       key={business.id}
+                      onMouseDown={(e) => e.preventDefault()}
                       onClick={() => handleSelectBusiness(business)}
-                      className="w-full px-4 py-3 text-left hover:bg-primary/10 transition-colors flex items-center justify-between"
+                      className="w-full px-4 py-3 text-left hover:bg-primary/20 transition-colors flex items-center justify-between"
                     >
                       <span className="text-foreground">{business.name}</span>
-                      <span className="text-xs text-primary bg-primary/10 px-2 py-1 rounded-full">
+                      <span className="text-xs text-primary-foreground bg-primary px-2 py-1 rounded-full">
                         {business.plan} Plan
                       </span>
                     </button>
@@ -164,10 +168,10 @@ const Pricing = () => {
               )}
 
               {recommendedPlan && (
-                <div className="mt-4 p-4 glass-card rounded-xl flex items-center gap-3">
-                  <Sparkles className="w-5 h-5 text-primary" />
+                <div className="mt-4 p-4 glass-card rounded-xl flex items-center gap-3 border border-accent/30 bg-accent/10">
+                  <Sparkles className="w-5 h-5 text-accent" />
                   <p className="text-sm text-foreground">
-                    Based on your business type, we recommend the <span className="font-bold text-primary">{recommendedPlan}</span> plan
+                    Based on your business type, we recommend the <span className="font-bold text-accent">{recommendedPlan}</span> plan
                   </p>
                 </div>
               )}
