@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { X, Loader2, Send, Briefcase } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+
 
 interface CareerApplicationFormProps {
   isOpen: boolean;
@@ -38,15 +38,18 @@ export function CareerApplicationForm({ isOpen, onClose, position }: CareerAppli
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.functions.invoke("send-email", {
-        body: {
-          type: "career",
+      const response = await fetch("https://formspree.io/f/mgowkwjl", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
           position,
           ...formData,
-        },
+        }),
       });
 
-      if (error) throw error;
+      if (!response.ok) throw new Error("Failed to submit application");
 
       toast({
         title: "Application Submitted!",

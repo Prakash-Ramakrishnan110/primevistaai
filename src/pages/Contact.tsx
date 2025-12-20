@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, MessageCircle, Send, Loader2 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+
 import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 const Contact = () => {
@@ -25,14 +25,15 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.functions.invoke("send-email", {
-        body: {
-          type: "contact",
-          ...formData,
+      const response = await fetch("https://formspree.io/f/meejgjbk", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify(formData),
       });
 
-      if (error) throw error;
+      if (!response.ok) throw new Error("Failed to send message");
 
       toast({
         title: "Message sent!",
