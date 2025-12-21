@@ -47,20 +47,20 @@ export function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group z-10">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-xl blur-lg opacity-0 group-hover:opacity-60 transition-all duration-500" />
-              <div className="relative bg-gradient-to-br from-card to-background p-1.5 rounded-xl border border-border/50 group-hover:border-primary/50 transition-all duration-300">
+              <div className="absolute inset-[-6px] bg-gradient-to-r from-primary via-accent to-primary rounded-2xl blur-md opacity-70 group-hover:opacity-100 animate-pulse transition-all duration-500" />
+              <div className="relative bg-gradient-to-br from-primary/20 to-accent/20 p-2 rounded-xl border-2 border-primary/50 group-hover:border-primary transition-all duration-300 backdrop-blur-sm">
                 <img
                   src={logo}
                   alt="Prime Vista Logo"
-                  className="w-8 h-8 md:w-9 md:h-9 object-contain group-hover:scale-110 transition-transform duration-300"
+                  className="w-10 h-10 md:w-11 md:h-11 object-contain brightness-110 contrast-110 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_8px_hsl(var(--primary)/0.8)]"
                 />
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-lg md:text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+              <span className="text-lg md:text-xl font-bold gradient-text">
                 Prime Vista
               </span>
-              <span className="text-[10px] text-muted-foreground font-medium tracking-widest uppercase hidden sm:block">
+              <span className="text-[10px] text-primary/80 font-medium tracking-widest uppercase hidden sm:block">
                 Innovation Hub
               </span>
             </div>
