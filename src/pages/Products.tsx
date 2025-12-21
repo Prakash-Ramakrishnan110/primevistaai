@@ -23,6 +23,9 @@ import {
   ChevronRight
 } from "lucide-react";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
+import { ScrollReveal } from "@/components/features/ScrollReveal";
+import { ParticleBackground } from "@/components/features/ParticleBackground";
+import { CountUpNumber } from "@/components/features/CountUpNumber";
 
 const products = [
   {
@@ -119,7 +122,8 @@ export default function Products() {
   const [activeProduct, setActiveProduct] = useState(0);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <ParticleBackground />
       <Navbar />
       
       {/* Hero Section */}
@@ -131,30 +135,38 @@ export default function Products() {
         </div>
         
         <div className="container relative mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-primary/10 text-primary border border-primary/20">
-            <Sparkles className="w-4 h-4" />
-            <span className="text-sm font-medium">Our Products & Solutions</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-            <span className="gradient-text">Intelligent Solutions</span>
-            <br />
-            <span className="text-foreground">for Modern Businesses</span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-10">
-            Enterprise-grade platforms designed to automate operations, unlock insights, 
-            and transform customer engagement across every touchpoint.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button variant="hero" size="lg" asChild>
-              <Link to="/contact">
-                <Play className="w-4 h-4 mr-2" />
-                Request Demo
-              </Link>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link to="/pricing">View Pricing</Link>
-            </Button>
-          </div>
+          <ScrollReveal>
+            <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-primary/10 text-primary border border-primary/20">
+              <Sparkles className="w-4 h-4" />
+              <span className="text-sm font-medium">Our Products & Solutions</span>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={100}>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+              <span className="gradient-text">Intelligent Solutions</span>
+              <br />
+              <span className="text-foreground">for Modern Businesses</span>
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal delay={200}>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-10">
+              Enterprise-grade platforms designed to automate operations, unlock insights, 
+              and transform customer engagement across every touchpoint.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={300}>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button variant="hero" size="lg" asChild>
+                <Link to="/contact">
+                  <Play className="w-4 h-4 mr-2" />
+                  Request Demo
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <Link to="/pricing">View Pricing</Link>
+              </Button>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

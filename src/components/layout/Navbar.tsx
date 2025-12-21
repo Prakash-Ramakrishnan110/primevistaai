@@ -26,12 +26,15 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <img 
-              src={logo} 
-              alt="Prime Vista Logo" 
-              className="w-10 h-10 md:w-12 md:h-12 object-contain group-hover:scale-110 transition-transform drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]"
-            />
-            <span className="text-xl font-bold gradient-text">Prime Vista</span>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary rounded-full blur-md opacity-60 group-hover:opacity-100 transition-opacity animate-pulse" />
+              <img 
+                src={logo} 
+                alt="Prime Vista Logo" 
+                className="relative w-10 h-10 md:w-12 md:h-12 object-contain group-hover:scale-110 transition-all duration-300 drop-shadow-[0_0_15px_hsl(var(--primary)/0.8)]"
+              />
+            </div>
+            <span className="text-xl md:text-2xl font-bold gradient-text tracking-tight">Prime Vista</span>
           </Link>
 
           {/* Desktop Navigation */}
