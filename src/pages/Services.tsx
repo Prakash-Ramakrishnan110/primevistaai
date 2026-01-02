@@ -13,6 +13,7 @@ const services = [
   {
     icon: Bot,
     title: "AI & Intelligent Systems",
+    slug: "ai-intelligent-systems",
     description: "Transform customer interactions and internal operations with AI-powered solutions.",
     features: [
       "Custom AI Chatbots & Virtual Assistants",
@@ -24,6 +25,7 @@ const services = [
   {
     icon: Workflow,
     title: "Automation & Workflow Systems",
+    slug: "automation-workflow-systems",
     description: "Eliminate manual work and connect your entire tech stack seamlessly.",
     features: [
       "WhatsApp Business Automation",
@@ -35,6 +37,7 @@ const services = [
   {
     icon: Cloud,
     title: "SaaS & Platform Development",
+    slug: "saas-platform-development",
     description: "Build scalable, subscription-ready platforms that serve thousands.",
     features: [
       "Multi-tenant SaaS Architecture",
@@ -46,6 +49,7 @@ const services = [
   {
     icon: Building2,
     title: "Government & Public Tech",
+    slug: "government-public-tech",
     description: "Modernize public services with transparent, efficient digital systems.",
     features: [
       "Education Management Systems",
@@ -57,6 +61,7 @@ const services = [
   {
     icon: Rocket,
     title: "Startup MVP Studio",
+    slug: "startup-mvp-studio",
     description: "Go from idea to investor-ready product in weeks, not months.",
     features: [
       "Rapid Prototyping & Validation",
@@ -122,7 +127,8 @@ const Services = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="glass-card p-8 md:p-10 hover:border-primary/50 transition-all duration-300"
+                id={service.slug}
+                className="glass-card p-8 md:p-10 hover:border-primary/50 transition-all duration-300 scroll-mt-32"
               >
                 <div className="grid md:grid-cols-3 gap-8">
                   <div className="md:col-span-1">
@@ -130,7 +136,14 @@ const Services = () => {
                       <service.icon className="w-7 h-7 text-primary" />
                     </div>
                     <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-                    <p className="text-muted-foreground">{service.description}</p>
+                    <p className="text-muted-foreground mb-4">{service.description}</p>
+                    <Link 
+                      to={`/services/${service.slug}`}
+                      className="inline-flex items-center text-primary hover:underline font-medium"
+                    >
+                      Learn more
+                      <ArrowRight className="w-4 h-4 ml-1" />
+                    </Link>
                   </div>
                   <div className="md:col-span-2">
                     <h4 className="text-sm font-medium text-primary mb-4 uppercase tracking-wider">What We Deliver</h4>
