@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Bot, Workflow, Cloud, Building2, Rocket } from "lucide-react";
+import { Bot, Workflow, Cloud, Building2, Rocket, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface MegaMenuProps {
   type: "products" | "services";
@@ -145,13 +146,12 @@ export function MegaMenu({ type, isOpen, onClose }: MegaMenuProps) {
                 : "Discover all our professional services"
               }
             </p>
-            <Link
-              to={basePath}
-              onClick={onClose}
-              className="text-sm font-medium text-primary hover:underline"
-            >
-              View all {type} →
-            </Link>
+            <Button variant="outline" size="sm" asChild>
+              <Link to={basePath} onClick={onClose}>
+                View All {type === "products" ? "Products" : "Services"}
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
