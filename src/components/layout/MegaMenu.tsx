@@ -7,7 +7,7 @@ interface MegaMenuProps {
   onClose: () => void;
 }
 
-// Your actual company services
+// Your actual company services with correct slugs
 const servicesItems = [
   {
     title: "AI & Intelligent Systems",
@@ -15,7 +15,7 @@ const servicesItems = [
     icon: Bot,
     color: "text-blue-500",
     bgColor: "bg-blue-500/10",
-    slug: "ai-systems",
+    slug: "ai-intelligent-systems",
   },
   {
     title: "Automation & Workflows",
@@ -23,7 +23,7 @@ const servicesItems = [
     icon: Workflow,
     color: "text-purple-500",
     bgColor: "bg-purple-500/10",
-    slug: "automation",
+    slug: "automation-workflow-systems",
   },
   {
     title: "SaaS & Platform Development",
@@ -31,7 +31,7 @@ const servicesItems = [
     icon: Cloud,
     color: "text-green-500",
     bgColor: "bg-green-500/10",
-    slug: "saas",
+    slug: "saas-platform-development",
   },
   {
     title: "Government & Public Tech",
@@ -39,7 +39,7 @@ const servicesItems = [
     icon: Building2,
     color: "text-orange-500",
     bgColor: "bg-orange-500/10",
-    slug: "govtech",
+    slug: "government-public-tech",
   },
   {
     title: "Startup MVP Studio",
@@ -47,7 +47,7 @@ const servicesItems = [
     icon: Rocket,
     color: "text-rose-500",
     bgColor: "bg-rose-500/10",
-    slug: "startup",
+    slug: "startup-mvp-studio",
   },
 ];
 
@@ -119,7 +119,7 @@ export function MegaMenu({ type, isOpen, onClose }: MegaMenuProps) {
             {items.map((item) => (
               <Link
                 key={item.title}
-                to={`${basePath}#${item.slug}`}
+                to={type === "services" ? `/services/${item.slug}` : `${basePath}#${item.slug}`}
                 onClick={onClose}
                 className="flex items-start gap-4 p-4 rounded-xl hover:bg-muted transition-colors group"
               >

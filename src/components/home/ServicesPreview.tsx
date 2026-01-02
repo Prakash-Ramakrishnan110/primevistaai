@@ -7,26 +7,31 @@ const services = [
     icon: Bot,
     title: "AI & Intelligent Systems",
     description: "Chatbots, NLP systems, and AI-powered decision engines that understand and respond intelligently.",
+    slug: "ai-intelligent-systems",
   },
   {
     icon: Workflow,
     title: "Automation & Workflows",
     description: "WhatsApp automation, CRM integrations, and API-driven workflows that eliminate manual work.",
+    slug: "automation-workflow-systems",
   },
   {
     icon: Cloud,
     title: "SaaS & Platforms",
     description: "Multi-tenant SaaS applications, subscription systems, and enterprise-grade dashboards.",
+    slug: "saas-platform-development",
   },
   {
     icon: Building2,
     title: "Government & Public Tech",
     description: "Education systems, scholarship monitoring, and transparency dashboards for public sector.",
+    slug: "government-public-tech",
   },
   {
     icon: Rocket,
     title: "Startup MVP Studio",
     description: "From idea to pitch-ready MVP. Rapid prototyping for founders who move fast.",
+    slug: "startup-mvp-studio",
   },
 ];
 
@@ -45,26 +50,23 @@ export function ServicesPreview() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {services.map((service, index) => {
-            const slugs = ["ai-systems", "automation", "saas", "govtech", "startup"];
-            return (
-              <Link
-                key={index}
-                to={`/services#${slugs[index]}`}
-                className="glass-card p-6 md:p-8 group hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 block"
-              >
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                  <service.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {service.description}
-                </p>
-              </Link>
-            );
-          })}
+          {services.map((service, index) => (
+            <Link
+              key={index}
+              to={`/services/${service.slug}`}
+              className="glass-card p-6 md:p-8 group hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 block"
+            >
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                <service.icon className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-lg md:text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
+                {service.title}
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {service.description}
+              </p>
+            </Link>
+          ))}
           
           {/* CTA Card */}
           <div className="glass-card p-6 md:p-8 flex flex-col items-center justify-center text-center gradient-border bg-gradient-to-br from-primary/5 to-accent/5">
