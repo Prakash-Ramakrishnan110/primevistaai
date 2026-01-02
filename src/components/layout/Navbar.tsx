@@ -111,21 +111,32 @@ export function Navbar() {
                     }
                   }}
                 >
-                  <Link
-                    to={link.path}
-                    className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                      location.pathname === link.path
-                        ? "text-primary bg-primary/10"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                    }`}
-                  >
-                    {link.name}
-                    {link.hasMega && (
+                  {link.hasMega ? (
+                    <button
+                      onClick={() => setActiveMega(activeMega === link.name.toLowerCase() ? null : link.name.toLowerCase() as "products" | "services")}
+                      className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                        location.pathname.startsWith(link.path)
+                          ? "text-primary bg-primary/10"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      }`}
+                    >
+                      {link.name}
                       <ChevronDown className={`w-4 h-4 transition-transform ${
                         activeMega === link.name.toLowerCase() ? 'rotate-180' : ''
                       }`} />
-                    )}
-                  </Link>
+                    </button>
+                  ) : (
+                    <Link
+                      to={link.path}
+                      className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                        location.pathname === link.path
+                          ? "text-primary bg-primary/10"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </div>
               ))}
               
